@@ -1,0 +1,64 @@
+<div class="container" style="margin-top:2%" ng-controller="GroupsController as grpCtrl">
+	<div style="margin: auto;width: 50%;"><h1>ADMIN DASH</h1> </div>
+	<hr>
+	<h2>1) TIME:</h2>
+	<div class="container">
+		<br><input type="text" size=40 ng-model="startDate">&nbsp;<button class="btn btn-success" ng-click="parseStartDate()">LOAD-START-TIME</button><br />
+		<br>
+		<input type="text"  size=40 ng-model="endDate">&nbsp;<button class="btn btn-success" ng-click="parseEndDate()">LOAD-END-TIME</button>
+		<br /><br /> <strong>PREVIEW:</strong> <br><strong>START-TIME:</strong> @  {{parsedStartDate}} sec <br /> &nbsp;&nbsp;&nbsp;<strong>END-TIME:</strong> @ {{parsedEndDate}} sec <br /><button class="btn btn-danger" ng-click="updateTime()">UPDATE</button><---(This will broadcast timer update to all connected game clients LIVE!!)
+	</div>
+	<br /><hr>
+
+	<h2>2) GROUPS:</h2>
+	<table class="table table-bordered table-striped grp-tbl">
+		<tr>
+			<th>DELETE-BUTTON</th>
+			<th>COMPUTER-ID</th>
+			<th>No</th>
+			<th>PASSWORD</th>
+			<th>EDIT-Button</th>
+		</tr>
+		<tr ng-repeat="group in groups | orderBy:'groupNo'">
+			<td ng-click="deleteGroup(group.groupNo)"><button class="btn btn-danger">X</button></td>
+			<td>{{group._id}}</td>
+			<td>{{group.groupNo}}</td>
+			<td>{{group.groupPassword}}</td>
+			<td ng-click="editGroup(group.groupNo)"><button class="btn btn-info">--->|</button></td>
+		</tr>
+		<tr ng-hide="newGroupIsEmpty()" style="background-color: lightgreen;">
+			<td>NOT-SAVED</td>
+			<td>{{newGroup._id}}</td>
+			<td>{{newGroup.groupNo}}</td>
+			<td>{{newGroup.groupPassword}}</td>
+			<td>NOT-READY</td>
+		</tr>
+	</table>
+	<br>
+
+	<form>
+		<table class="space-tbl">
+			<tr>
+				<td>Add a new Group:</td>
+			</tr>
+			<tr>
+				<td>Group No:</td>
+				<td>
+					<input type="text" ng-model="newGroup.groupNo">
+				</td>
+			</tr>
+			<tr>
+				<td>Group Password:</td>
+				<td>
+					<input type="text" ng-model="newGroup.groupPassword">
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<button class="btn btn-success" ng-click="addGroup()">ADD</button>
+				</td>
+			</tr>
+		</table>
+	</form>
+	<br /><hr>
+</div>

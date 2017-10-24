@@ -1,0 +1,20 @@
+table.space-tbl td{
+	margin: 12px 12px 12px 12px;
+	padding: 12px 12px 12px 12px;
+}
+td.grp-tbl,th.grp-tbl {
+	height: 50px; 
+	width:50px;
+	text-align:center; 
+	vertical-align:middle;
+}
+pre {
+    overflow: auto;
+}
+.question-div{
+	margin: 2%;
+	padding: 2%;
+}
+.border-it{
+	border:1px solid black;
+}
